@@ -13,6 +13,11 @@ class ContentData: ObservableObject {
    @Published var forwardDisabled: Bool = true
 }
 
+let apsect1 = false;
+let aspect2 = false;
+let aspect3 = false;
+
+
 struct ContentView: View {
    @ObservedObject var contentData = ContentData()
    var webView: WebView!
@@ -26,18 +31,19 @@ struct ContentView: View {
       VStack {
           webView
               .frame(width: gp.size.width, height: gp.size.height * 0.7)
+          Divider()
          HStack {
              Button(action: {
                 self.webView.goBack()
              }, label: {
-                 Image(systemName: "arrow.left.circle")
+                 Image(systemName: "arrow.backward")
                      .padding(.leading, 8)
                    .font(.title)
              }).disabled(self.contentData.backDisabled)
              Button(action: {
                 self.webView.goForward()
              }, label: {
-                Image(systemName: "arrow.right.circle")
+                Image(systemName: "arrow.forward")
                    .font(.title)
              }).disabled(self.contentData.forwardDisabled)
             TextField("google.com", text: $contentData.inputURL)
@@ -55,10 +61,22 @@ struct ContentView: View {
             }
             .padding(.trailing, 10)
          }
-
-
+         .frame(width: gp.size.width, height: gp.size.height * 0.045)
+          Spacer()
+          HStack(spacing: 50.0) {
+              Image(systemName: "video.circle")
+                  .resizable(resizingMode: .tile)
+                  .frame(width: gp.size.width * 0.15, height: gp.size.height * 0.08)
+          Image(systemName: "note.text.badge.plus")
+                  .resizable(resizingMode: .tile)
+                  .frame(width: gp.size.width * 0.15, height: gp.size.height * 0.08)
+              Image(systemName: "list.dash")
+                  .resizable(resizingMode: .tile)
+                  .frame(width: gp.size.width * 0.15, height: gp.size.height * 0.08)
+          }
          Spacer()
       }
+      .frame(width: gp.size.width, height: gp.size.height * 1)
    }
 }
 }
