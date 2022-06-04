@@ -7,14 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EB42F47D284BC8EB004C82D7 /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = EB42F47C284BC8EB004C82D7 /* Introspect */; };
+		EB42F47F284BD50F004C82D7 /* NoteNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB42F47E284BD50F004C82D7 /* NoteNew.swift */; };
+		EB42F481284BE195004C82D7 /* NoteList.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB42F480284BE195004C82D7 /* NoteList.swift */; };
 		EB85CFD02848A52C00A82BA6 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB85CFCF2848A52C00A82BA6 /* WebView.swift */; };
 		EB936FAE28454A38003EDC7B /* Task_a_LyzerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB936FAD28454A38003EDC7B /* Task_a_LyzerApp.swift */; };
 		EB936FB028454A38003EDC7B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB936FAF28454A38003EDC7B /* ContentView.swift */; };
 		EB936FB228454A3C003EDC7B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB936FB128454A3C003EDC7B /* Assets.xcassets */; };
 		EB936FB528454A3C003EDC7B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB936FB428454A3C003EDC7B /* Preview Assets.xcassets */; };
+		EBF86D41284BB82D00D8D069 /* SwiftUIKitView in Frameworks */ = {isa = PBXBuildFile; productRef = EBF86D40284BB82D00D8D069 /* SwiftUIKitView */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		EB42F47E284BD50F004C82D7 /* NoteNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteNew.swift; sourceTree = "<group>"; };
+		EB42F480284BE195004C82D7 /* NoteList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteList.swift; sourceTree = "<group>"; };
 		EB85CFCF2848A52C00A82BA6 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		EB936FAA28454A38003EDC7B /* Task-a-Lyzer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Task-a-Lyzer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB936FAD28454A38003EDC7B /* Task_a_LyzerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task_a_LyzerApp.swift; sourceTree = "<group>"; };
@@ -28,6 +34,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EBF86D41284BB82D00D8D069 /* SwiftUIKitView in Frameworks */,
+				EB42F47D284BC8EB004C82D7 /* Introspect in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -58,6 +66,8 @@
 				EB936FB128454A3C003EDC7B /* Assets.xcassets */,
 				EB936FB328454A3C003EDC7B /* Preview Content */,
 				EB85CFCF2848A52C00A82BA6 /* WebView.swift */,
+				EB42F47E284BD50F004C82D7 /* NoteNew.swift */,
+				EB42F480284BE195004C82D7 /* NoteList.swift */,
 			);
 			path = "Task-a-Lyzer";
 			sourceTree = "<group>";
@@ -86,6 +96,10 @@
 			dependencies = (
 			);
 			name = "Task-a-Lyzer";
+			packageProductDependencies = (
+				EBF86D40284BB82D00D8D069 /* SwiftUIKitView */,
+				EB42F47C284BC8EB004C82D7 /* Introspect */,
+			);
 			productName = "Task-a-Lyzer";
 			productReference = EB936FAA28454A38003EDC7B /* Task-a-Lyzer.app */;
 			productType = "com.apple.product-type.application";
@@ -114,6 +128,10 @@
 				Base,
 			);
 			mainGroup = EB936FA128454A38003EDC7B;
+			packageReferences = (
+				EBF86D3F284BB82D00D8D069 /* XCRemoteSwiftPackageReference "SwiftUIKitView" */,
+				EB42F47B284BC8EB004C82D7 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
+			);
 			productRefGroup = EB936FAB28454A38003EDC7B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -143,6 +161,8 @@
 				EB85CFD02848A52C00A82BA6 /* WebView.swift in Sources */,
 				EB936FB028454A38003EDC7B /* ContentView.swift in Sources */,
 				EB936FAE28454A38003EDC7B /* Task_a_LyzerApp.swift in Sources */,
+				EB42F47F284BD50F004C82D7 /* NoteNew.swift in Sources */,
+				EB42F481284BE195004C82D7 /* NoteList.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -341,6 +361,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		EB42F47B284BC8EB004C82D7 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/siteline/SwiftUI-Introspect.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.1.4;
+			};
+		};
+		EBF86D3F284BB82D00D8D069 /* XCRemoteSwiftPackageReference "SwiftUIKitView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AvdLee/SwiftUIKitView.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		EB42F47C284BC8EB004C82D7 /* Introspect */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EB42F47B284BC8EB004C82D7 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */;
+			productName = Introspect;
+		};
+		EBF86D40284BB82D00D8D069 /* SwiftUIKitView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EBF86D3F284BB82D00D8D069 /* XCRemoteSwiftPackageReference "SwiftUIKitView" */;
+			productName = SwiftUIKitView;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = EB936FA228454A38003EDC7B /* Project object */;
 }

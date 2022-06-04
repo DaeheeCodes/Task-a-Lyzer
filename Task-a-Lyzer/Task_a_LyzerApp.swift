@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftUIKitView
 
 @main
 struct Task_a_LyzerApp: App {
