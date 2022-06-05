@@ -37,7 +37,8 @@ struct NoteNew : View {
     var inputView: some View {
         VStack {
             TextEditor(text: $taskText)
-            Button(action: didTapAddTask, label: { Text("Add") }).padding(8)
+            Spacer()
+            Button(action: didTapAddTask, label: { Text("Add") })
         }
     }
     

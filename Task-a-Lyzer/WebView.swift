@@ -8,26 +8,40 @@
 import Foundation
 import SwiftUI
 import WebKit
+
  
+
 struct WebView : UIViewRepresentable {
    @Binding var inputURL: String
    @Binding var backDisabled: Bool
    @Binding var forwardDisabled: Bool
     
-   let view: WKWebView = WKWebView()
+    
+    
+    
+   var view: WKWebView = WKWebView()
 
+    
    func makeUIView(context: Context) -> WKWebView  {
+       let webconfig = WKWebViewConfiguration()
+       webconfig.allowsInlineMediaPlayback = true
+       
       view.navigationDelegate = context.coordinator
-      let request = URLRequest(url: URL(string: "https://www.google.com")!)
-      self.view.load(request)
+      let request = URLRequest(url: URL(string: "https://www.udemy.com/course/js-algorithms-and-data-structures-masterclass/learn/lecture/8344044?start=435#overview?playsinline=1")!)
+       self.view.load(request)
+       self.view.frame = self.view.frame
+       self.view.configuration.allowsInlineMediaPlayback = true
       return view
    }
-   func updateUIView(_ uiView: WKWebView, context: Context) {}
+   func updateUIView(_ uiView: WKWebView, context: Context) {
+   }
 
    func loadWeb(loadWeb: String) {
       let dataURL = loadWeb.data(using: String.Encoding.utf8, allowLossyConversion: false)
       if let webURL = URL(dataRepresentation: dataURL!, relativeTo: nil, isAbsolute: true) {
+
          let request = URLRequest(url: webURL)
+
          view.load(request)
       }
    }
