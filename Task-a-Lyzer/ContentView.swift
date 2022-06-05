@@ -8,9 +8,9 @@
 import SwiftUI
 import Introspect
 import WebKit
+import SwiftUIWebView
 
-
-
+//observableobject vs observed, in swift we do not have to declare on change though. 
 class ContentData: ObservableObject {
    @Published var inputURL: String = ""
    @Published var backDisabled: Bool = true
@@ -22,16 +22,14 @@ class ContentData: ObservableObject {
 
 struct ContentView: View {
 
-
+    // use states like react
+    @State private var action = WebViewAction.idle
+    @State private var state = WebViewState.empty
+    @State private var address = "https://www.google.com"
     
     var ratioSlider: UISlider!
     @State var size: Double = 0.7
-   @ObservedObject var contentData = ContentData()
-   var webView: WebView!
 
-   init() {
-       webView = WebView(inputURL: $contentData.inputURL, backDisabled: $contentData.backDisabled, forwardDisabled: $contentData.forwardDisabled )
-   }
 
    var body: some View {
        
@@ -39,9 +37,10 @@ struct ContentView: View {
        //GeometryReader for adaptive screen size for different devices. Hstack vs Vstack change to comeNSObject
        GeometryReader { gp in
            VStack {
-          webView
-                   .frame(width: gp.size.width, height: gp.size.height * CGFloat((size)))
-
+               WebView.init(config: WebViewConfig.init(allowsInlineMediaPlayback:true), action: $action,
+                       state: $state,
+                       restrictedPages: [])
+              .frame(width: gp.size.width, height: gp.size.height * CGFloat((size)))
           Slider(value: Binding(get: {
                      self.size
                  }, set: { (newVal) in
@@ -52,33 +51,37 @@ struct ContentView: View {
           .introspectSlider { slider in
                           slider.setThumbImage(UIImage(systemName: "arrowtriangle.left.and.line.vertical.and.arrowtriangle.right.fill"), for: .normal)
                       }
-    
+    // everything is sized by global property for better scaleability.
           HStack {
-             Button(action: {
-                self.webView.goBack()
-             }, label: {
-                 Image(systemName: "arrow.backward")
-                     .padding(.leading, 8)
-                   .font(.title)
-             }).disabled(self.contentData.backDisabled)
-             Button(action: {
-                self.webView.goForward()
-             }, label: {
-                Image(systemName: "arrow.forward")
-                   .font(.title)
-             }).disabled(self.contentData.forwardDisabled)
-            TextField("google.com", text: $contentData.inputURL)
-             Button(action: {
-                self.webView.refresh()
-             }, label: {
-                Image(systemName: "arrow.clockwise.circle")
-                   .font(.title)
-             })
-            Button("Go") {
-               let text = self.contentData.inputURL.trimmingCharacters(in: .whitespaces)
-               if !text.isEmpty {
-                  self.webView.loadWeb(loadWeb:"https://" + text) //More user friendly to allow non https inputs
-               }
+              if state.canGoBack {
+                  Button(action: {
+                      action = .goBack
+                  }) {
+                      Image(systemName: "chevron.left")
+                          .imageScale(.large)
+                  }
+              }
+              if state.canGoForward {
+                  Button(action: {
+                      action = .goForward
+                  }) {
+                  Image(systemName: "chevron.right")
+                      .imageScale(.large)
+                      
+                  }
+              }
+              TextField("Address", text: $address).disableAutocorrection(true)
+              Button(action: {
+                  action = .reload
+              }) {
+                  Image(systemName: "arrow.counterclockwise")
+                      .imageScale(.large)
+              }
+              //better user experience with https added in the address for them.
+              Button("Go") {
+                  if let url = URL(string: "https://" + address) {
+                      action = .load(URLRequest(url: url))
+                  }
             }
             .padding(.trailing, 7)
          }

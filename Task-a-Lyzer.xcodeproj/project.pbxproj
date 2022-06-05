@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EB0079E9284C958E0034B3A8 /* SwiftUIWebView in Frameworks */ = {isa = PBXBuildFile; productRef = EB0079E8284C958E0034B3A8 /* SwiftUIWebView */; };
 		EB42F47D284BC8EB004C82D7 /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = EB42F47C284BC8EB004C82D7 /* Introspect */; };
 		EB42F47F284BD50F004C82D7 /* NoteNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB42F47E284BD50F004C82D7 /* NoteNew.swift */; };
 		EB42F481284BE195004C82D7 /* NoteList.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB42F480284BE195004C82D7 /* NoteList.swift */; };
@@ -34,6 +35,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EB0079E9284C958E0034B3A8 /* SwiftUIWebView in Frameworks */,
 				EBF86D41284BB82D00D8D069 /* SwiftUIKitView in Frameworks */,
 				EB42F47D284BC8EB004C82D7 /* Introspect in Frameworks */,
 			);
@@ -99,6 +101,7 @@
 			packageProductDependencies = (
 				EBF86D40284BB82D00D8D069 /* SwiftUIKitView */,
 				EB42F47C284BC8EB004C82D7 /* Introspect */,
+				EB0079E8284C958E0034B3A8 /* SwiftUIWebView */,
 			);
 			productName = "Task-a-Lyzer";
 			productReference = EB936FAA28454A38003EDC7B /* Task-a-Lyzer.app */;
@@ -131,6 +134,7 @@
 			packageReferences = (
 				EBF86D3F284BB82D00D8D069 /* XCRemoteSwiftPackageReference "SwiftUIKitView" */,
 				EB42F47B284BC8EB004C82D7 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
+				EB0079E7284C958E0034B3A8 /* XCRemoteSwiftPackageReference "swiftui-webview" */,
 			);
 			productRefGroup = EB936FAB28454A38003EDC7B /* Products */;
 			projectDirPath = "";
@@ -367,6 +371,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		EB0079E7284C958E0034B3A8 /* XCRemoteSwiftPackageReference "swiftui-webview" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/globulus/swiftui-webview";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		EB42F47B284BC8EB004C82D7 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/siteline/SwiftUI-Introspect.git";
@@ -386,6 +398,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		EB0079E8284C958E0034B3A8 /* SwiftUIWebView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EB0079E7284C958E0034B3A8 /* XCRemoteSwiftPackageReference "swiftui-webview" */;
+			productName = SwiftUIWebView;
+		};
 		EB42F47C284BC8EB004C82D7 /* Introspect */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = EB42F47B284BC8EB004C82D7 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */;

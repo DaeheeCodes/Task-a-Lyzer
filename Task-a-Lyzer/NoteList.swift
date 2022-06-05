@@ -43,6 +43,7 @@ struct NoteList : View {
                     self.itemToDelete = item
                     self.showAlert = true
                 }
+
             }
             .alert(isPresented: $showAlert, content: {
                 alert

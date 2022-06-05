@@ -4,7 +4,11 @@
 //
 //  Created by DHC on 6/2/22.
 //
-
+/*
+ 
+ granfathered code
+ 
+ 
 import Foundation
 import SwiftUI
 import WebKit
@@ -31,6 +35,7 @@ struct WebView : UIViewRepresentable {
        self.view.load(request)
        self.view.frame = self.view.frame
        self.view.configuration.allowsInlineMediaPlayback = true
+       self.view.configuration.mediaTypesRequiringUserActionForPlayback = []
       return view
    }
    func updateUIView(_ uiView: WKWebView, context: Context) {
@@ -76,3 +81,5 @@ class CoordinatorWebView: NSObject, WKNavigationDelegate {
       }
    }
 }
+
+*/
