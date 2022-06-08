@@ -12,6 +12,8 @@
 		EB42F47F284BD50F004C82D7 /* NoteNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB42F47E284BD50F004C82D7 /* NoteNew.swift */; };
 		EB42F481284BE195004C82D7 /* NoteList.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB42F480284BE195004C82D7 /* NoteList.swift */; };
 		EB85CFD02848A52C00A82BA6 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB85CFCF2848A52C00A82BA6 /* WebView.swift */; };
+		EB8DAD2A28507B95000506D1 /* FavList.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8DAD2928507B95000506D1 /* FavList.swift */; };
+		EB8DAD2C28507D65000506D1 /* FavListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8DAD2B28507D65000506D1 /* FavListView.swift */; };
 		EB936FAE28454A38003EDC7B /* Task_a_LyzerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB936FAD28454A38003EDC7B /* Task_a_LyzerApp.swift */; };
 		EB936FB028454A38003EDC7B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB936FAF28454A38003EDC7B /* ContentView.swift */; };
 		EB936FB228454A3C003EDC7B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB936FB128454A3C003EDC7B /* Assets.xcassets */; };
@@ -23,6 +25,8 @@
 		EB42F47E284BD50F004C82D7 /* NoteNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteNew.swift; sourceTree = "<group>"; };
 		EB42F480284BE195004C82D7 /* NoteList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteList.swift; sourceTree = "<group>"; };
 		EB85CFCF2848A52C00A82BA6 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
+		EB8DAD2928507B95000506D1 /* FavList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FavList.swift; path = "../../../../Downloads/Menus-in-SwiftUI-main/Menus in SwiftUI/FavList.swift"; sourceTree = "<group>"; };
+		EB8DAD2B28507D65000506D1 /* FavListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavListView.swift; sourceTree = "<group>"; };
 		EB936FAA28454A38003EDC7B /* Task-a-Lyzer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Task-a-Lyzer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB936FAD28454A38003EDC7B /* Task_a_LyzerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task_a_LyzerApp.swift; sourceTree = "<group>"; };
 		EB936FAF28454A38003EDC7B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ContentView.swift; path = "Task-a-Lyzer/ContentView.swift"; sourceTree = SOURCE_ROOT; };
@@ -63,6 +67,7 @@
 		EB936FAC28454A38003EDC7B /* Task-a-Lyzer */ = {
 			isa = PBXGroup;
 			children = (
+				EB8DAD2928507B95000506D1 /* FavList.swift */,
 				EB936FAF28454A38003EDC7B /* ContentView.swift */,
 				EB936FAD28454A38003EDC7B /* Task_a_LyzerApp.swift */,
 				EB936FB128454A3C003EDC7B /* Assets.xcassets */,
@@ -70,6 +75,7 @@
 				EB85CFCF2848A52C00A82BA6 /* WebView.swift */,
 				EB42F47E284BD50F004C82D7 /* NoteNew.swift */,
 				EB42F480284BE195004C82D7 /* NoteList.swift */,
+				EB8DAD2B28507D65000506D1 /* FavListView.swift */,
 			);
 			path = "Task-a-Lyzer";
 			sourceTree = "<group>";
@@ -165,6 +171,8 @@
 				EB85CFD02848A52C00A82BA6 /* WebView.swift in Sources */,
 				EB936FB028454A38003EDC7B /* ContentView.swift in Sources */,
 				EB936FAE28454A38003EDC7B /* Task_a_LyzerApp.swift in Sources */,
+				EB8DAD2C28507D65000506D1 /* FavListView.swift in Sources */,
+				EB8DAD2A28507B95000506D1 /* FavList.swift in Sources */,
 				EB42F47F284BD50F004C82D7 /* NoteNew.swift in Sources */,
 				EB42F481284BE195004C82D7 /* NoteList.swift in Sources */,
 			);
