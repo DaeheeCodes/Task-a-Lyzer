@@ -1,0 +1,32 @@
+{
+  "pins" : [
+    {
+      "identity" : "swiftui-introspect",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/siteline/SwiftUI-Introspect.git",
+      "state" : {
+        "revision" : "f2616860a41f9d9932da412a8978fec79c06fe24",
+        "version" : "0.1.4"
+      }
+    },
+    {
+      "identity" : "swiftui-webview",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/globulus/swiftui-webview",
+      "state" : {
+        "revision" : "62d86f9c63f457603bec3e8bd963fae392da230a",
+        "version" : "1.0.6"
+      }
+    },
+    {
+      "identity" : "swiftuikitview",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/AvdLee/SwiftUIKitView.git",
+      "state" : {
+        "revision" : "296bf2ccb97efed44dea76622f4a10359ce22f6a",
+        "version" : "1.0.3"
+      }
+    }
+  ],
+  "version" : 2
+}
