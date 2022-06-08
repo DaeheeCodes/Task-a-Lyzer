@@ -18,8 +18,22 @@ struct FavItem: Codable, Hashable, Identifiable {
 }
 
 
+
+
 struct ContentView: View {
 
+    
+   /*
+    @StateObject var favListVM = FavListView()
+
+    ForEach(favListVM.favList) { item in
+                Button("\(item.name)") {
+                    if let url = URL(string: "https://" + item.url) {
+                        action = .load(URLRequest(url: url))
+                    }
+              }
+    */
+    
     @State var favItems: [FavItem] = {
         guard let data = UserDefaults.standard.data(forKey: "favorites") else { return [] }
         if let json = try? JSONDecoder().decode([FavItem].self, from: data) {
@@ -39,7 +53,7 @@ struct ContentView: View {
     @State private var action = WebViewAction.idle
     @State private var state = WebViewState.empty
     @State private var address = "google.com"
-    @StateObject var favListVM = FavListView()
+ //   @StateObject var favListVM = FavListView()
 
     var ratioSlider: UISlider!
     @State var size: Double = 0.7
@@ -100,15 +114,16 @@ struct ContentView: View {
                */
               TextField("Address", text: $address).disableAutocorrection(true)
               Menu {
-                  Menu ("View Bookmark") {                          ForEach(favListVM.favList) { item in
-                              Button("\(item.name)") {
+                  Menu ("View Bookmark") {                          ForEach(favItems) { item in
+                              Button("\(item.text)") {
                                   if let url = URL(string: "https://" + item.url) {
                                       action = .load(URLRequest(url: url))
                                   }
                             }
                   }
                   }
-                  Button("Add Bookmark", action: { })
+                  Button("Add Bookmark", action: didTapAddFav
+                  )
               } label: {
                   Image(systemName: "star")
               }
@@ -145,7 +160,7 @@ struct ContentView: View {
                   }).font(.system(size: 45.0))
                   .padding(.bottom, (gp.size.height > gp.size.width) ? 80 : 0)
               NavigationLink(
-                  destination: NoteList(),
+                destination: FavListView,
                   label: {
                       Image(systemName: "bookmark.square")
                           .frame(width: gp.size.width * 0.12, height: gp.size.height * 0.06)
@@ -160,7 +175,7 @@ struct ContentView: View {
     func didTapAddFav() {
         //random id from .id
         let id = favItems.reduce(0) { max($0, $1.id) } + 1
-        favItems.insert(FavItem(id: id, text: favText), at: 0)
+        favItems.insert(FavItem(id: id, text: state.pageTitle ?? "!", url: address), at: 0)
         favText = ""
         favSave()
     }
@@ -183,7 +198,29 @@ struct ContentView: View {
               secondaryButton: .cancel())
     }
     
+    var FavListView: some View {
+        VStack {
+            List(favItems) { item in
+                VStack(alignment: .leading) {
+                    HStack {
+                    Text(item.text).font(.headline)
+                        Spacer()
+                    Image(systemName: "delete.left")
+                    }
+                    Text(item.url).lineLimit(nil).multilineTextAlignment(.leading)
+                }
+                .onTapGesture (count: 1) {
+                    self.favItemToDelete = item
+                    self.favShowAlert = true
+                }
+            }.alert(isPresented: $favShowAlert, content: {
+                favAlert
+            })
+        }
+    }
+    
 }
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
