@@ -203,11 +203,11 @@ struct ContentView: View {
             List(favItems) { item in
                 VStack(alignment: .leading) {
                     HStack {
-                    Text(item.text).font(.headline)
+                    Text(item.text).font(.headline).lineLimit(1)
                         Spacer()
                     Image(systemName: "delete.left")
                     }
-                    Text(item.url).lineLimit(nil).multilineTextAlignment(.leading)
+                    Text(item.url).lineLimit(2).multilineTextAlignment(.leading)
                 }
                 .onTapGesture (count: 1) {
                     self.favItemToDelete = item

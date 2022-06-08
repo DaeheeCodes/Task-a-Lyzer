@@ -10,6 +10,9 @@ import SwiftUI
 
 
 struct NoteList : View {
+    @State private var isShowingPopover = false
+
+    
     @State var items: [NoteItem] = {
         guard let data = UserDefaults.standard.data(forKey: "notes") else { return [] }
         if let json = try? JSONDecoder().decode([NoteItem].self, from: data) {
@@ -33,17 +36,22 @@ struct NoteList : View {
     
     
     var body: some View {
+        
         VStack {
             List(items) { item in
                 VStack(alignment: .leading) {
                     Text(item.dateText).font(.headline)
-                    Text(item.text).lineLimit(nil).multilineTextAlignment(.leading)
-                }
+                    Text(item.text).lineLimit(2).multilineTextAlignment(.leading)
+                    Button("View More") {
+                        self.isShowingPopover = true
+                            }
+                        }.popover(isPresented: $isShowingPopover) {
+                            Text(item.text).lineLimit(nil)
+                        }
                 .onLongPressGesture {
                     self.itemToDelete = item
                     self.showAlert = true
                 }
-
             }
             .alert(isPresented: $showAlert, content: {
                 alert
@@ -68,5 +76,12 @@ struct NoteList : View {
         guard let data = try? JSONEncoder().encode(items) else { return }
         UserDefaults.standard.set(data, forKey: "notes")
     }
+    
+    func didTapEditTask() {
+        //random id from .id
+        let id = items.reduce(0) { max($0, $1.id) } + 1
+        items.insert(NoteItem(id: id, text: taskText), at: 0)
+        taskText = ""
+        save()
+    }
 }
-
