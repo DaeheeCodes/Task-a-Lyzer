@@ -52,12 +52,13 @@ struct NoteList : View {
     @State var itemToDelete: NoteItem?
     
     var alert: Alert {
-        Alert(title: Text("Hey!"),
+        Alert(title: Text("WARNING"),
               message: Text("Are you sure you want to delete this item?"),
               primaryButton: .destructive(Text("Delete"), action: deleteNote),
               secondaryButton: .cancel())
     }
-    @State private var document: MessageDocument = MessageDocument(message: "Hello, World!")
+    @State private var document: MessageDocument = MessageDocument(message: "Error")
+    @State  var fullText: String = ""
 
     @State  var showExporter: Bool = false
     var body: some View {
@@ -76,6 +77,7 @@ struct NoteList : View {
                     Text(item.text).lineLimit(2).multilineTextAlignment(.leading)
                     HStack {
                         Text("View More").font(.headline).foregroundColor(.blue).onTapGesture (count: 1) {
+                            self.fullText = item.text
                         self.isShowingPopover = true
                     }
                         Spacer()
@@ -87,7 +89,7 @@ struct NoteList : View {
                             .imageScale(.large)
                     }}.sheet(isPresented: self.$isShowingPopover) {
                     HStack {
-                        Text(item.text)
+                    Text(fullText)
                     }
                 }
             }
@@ -102,10 +104,11 @@ struct NoteList : View {
             contentType: .plainText,
             defaultFilename: "Message"
         ) { result in
-            if case .success = result {
-                // Handle success.
-            } else {
-                // Handle failure.
+            switch result {
+            case .success(let url):
+                print("Saved to \(url)")
+            case .failure(let error):
+                print(error.localizedDescription)
             }
         }
         

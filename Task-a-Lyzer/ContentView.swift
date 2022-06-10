@@ -91,27 +91,8 @@ struct ContentView: View {
                       .imageScale(.large)
                       
                   }
-              /*
-               List(items) { item in
-                   VStack(alignment: .leading) {
-                       Text(item.dateText).font(.headline)
-                       Text(item.text).lineLimit(nil).multilineTextAlignment(.leading)
-                   }
-                   .onLongPressGesture {
-                       self.itemToDelete = item
-                       self.showAlert = true
-                   }
 
-               }
-               */
               TextField("Address", text: $address).disableAutocorrection(true)
-              Button(action: {
-                  let text = self.address.trimmingCharacters(in: .whitespaces)
-                  self.subWebView.loadWeb(loadWeb: text)
-              }, label: {
-                  Image(systemName: "arrow.left.circle")
-                     .font(.title)
-              })
               Menu {
                   Menu ("View Bookmark") {                          ForEach(favItems) { item in
                               Button("\(item.text)") {
@@ -198,7 +179,7 @@ struct ContentView: View {
     }
     
     var favAlert: Alert {
-        Alert(title: Text("Hey!"),
+        Alert(title: Text("WARNING"),
               message: Text("Are you sure you want to delete this item?"),
               primaryButton: .destructive(Text("Delete"), action: deleteFav),
               secondaryButton: .cancel())

@@ -122,6 +122,8 @@ public struct WebView: UIViewRepresentable {
     webView.navigationDelegate = context.coordinator
     webView.allowsBackForwardNavigationGestures = true
     webView.scrollView.isScrollEnabled = true
+      let request = URLRequest(url: URL(string: "https://www.google.com")!)
+      webView.load(request)
     return webView
   }
 

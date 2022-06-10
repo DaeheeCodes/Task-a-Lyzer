@@ -5,6 +5,9 @@
 //  Created by DHC on 6/9/22.
 //
 
+
+
+//may implement as 3rd view
 import Foundation
 import SwiftUI
 import SafariServices
