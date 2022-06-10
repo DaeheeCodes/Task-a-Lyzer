@@ -105,6 +105,13 @@ struct ContentView: View {
                }
                */
               TextField("Address", text: $address).disableAutocorrection(true)
+              Button(action: {
+                  let text = self.address.trimmingCharacters(in: .whitespaces)
+                  self.subWebView.loadWeb(loadWeb: text)
+              }, label: {
+                  Image(systemName: "arrow.left.circle")
+                     .font(.title)
+              })
               Menu {
                   Menu ("View Bookmark") {                          ForEach(favItems) { item in
                               Button("\(item.text)") {
@@ -162,7 +169,7 @@ struct ContentView: View {
               NavigationLink(
                 destination: SubWebView(inputURL: $contentData.inputURL, backDisabled: $contentData.backDisabled, forwardDisabled: $contentData.forwardDisabled),
                   label: {
-                      Image(systemName: "lightbulb")
+                      Image(systemName: "icloud")
                           .frame(width: gp.size.width * 0.12, height: gp.size.height * 0.06)
                   }).font(.system(size: 45.0))
                   .padding(.bottom, (gp.size.height > gp.size.width) ? 80 : 0)

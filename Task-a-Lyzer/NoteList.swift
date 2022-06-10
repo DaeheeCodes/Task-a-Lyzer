@@ -87,7 +87,7 @@ struct NoteList : View {
                             .imageScale(.large)
                     }}.sheet(isPresented: self.$isShowingPopover) {
                     HStack {
-                    Text(item.text)
+                        Text(item.text)
                     }
                 }
             }
