@@ -6,11 +6,35 @@
 //
 
 import SwiftUI
+import UniformTypeIdentifiers
 
+struct MessageDocument: FileDocument {
+    
+    static var readableContentTypes: [UTType] { [.plainText] }
 
+    var message: String
+
+    init(message: String) {
+        self.message = message
+    }
+
+    init(configuration: ReadConfiguration) throws {
+        guard let data = configuration.file.regularFileContents,
+              let string = String(data: data, encoding: .utf8)
+        else {
+            throw CocoaError(.fileReadCorruptFile)
+        }
+        message = string
+    }
+
+    func fileWrapper(configuration: WriteConfiguration) throws -> FileWrapper {
+        return FileWrapper(regularFileWithContents: message.data(using: .utf8)!)
+    }
+    
+}
 
 struct NoteList : View {
-    @State private var isShowingPopover = false
+    @State private var isShowingPopover: Bool = false
 
     
     @State var items: [NoteItem] = {
@@ -33,31 +57,61 @@ struct NoteList : View {
               primaryButton: .destructive(Text("Delete"), action: deleteNote),
               secondaryButton: .cancel())
     }
-    
-    
+    @State private var document: MessageDocument = MessageDocument(message: "Hello, World!")
+
+    @State  var showExporter: Bool = false
     var body: some View {
-        
         VStack {
             List(items) { item in
                 VStack(alignment: .leading) {
+                    HStack {
                     Text(item.dateText).font(.headline)
-                    Text(item.text).lineLimit(2).multilineTextAlignment(.leading)
-                    Button("View More") {
-                        self.isShowingPopover = true
+                        Spacer()
+                    Image(systemName: "delete.left").foregroundColor(.red)
+                            .onTapGesture (count: 1) {
+                                self.itemToDelete = item
+                                self.showAlert = true
                             }
-                        }.popover(isPresented: $isShowingPopover) {
-                            Text(item.text).lineLimit(nil)
-                        }
-                .onLongPressGesture {
-                    self.itemToDelete = item
-                    self.showAlert = true
+                    }
+                    Text(item.text).lineLimit(2).multilineTextAlignment(.leading)
+                    HStack {
+                        Text("View More").font(.headline).foregroundColor(.blue).onTapGesture (count: 1) {
+                        self.isShowingPopover = true
+                    }
+                        Spacer()
+                        Button(action: {
+                        self.document.message = item.text
+                        self.showExporter = true
+                    }) {
+                        Image(systemName: "square.and.arrow.up")
+                            .imageScale(.large)
+                    }}.sheet(isPresented: self.$isShowingPopover) {
+                    HStack {
+                    Text(item.text)
+                    }
                 }
+            }
+                
             }
             .alert(isPresented: $showAlert, content: {
                 alert
             })
+        }.fileExporter(
+            isPresented: $showExporter,
+            document: document,
+            contentType: .plainText,
+            defaultFilename: "Message"
+        ) { result in
+            if case .success = result {
+                // Handle success.
+            } else {
+                // Handle failure.
+            }
         }
+        
     }
+    
+
     
     func didTapAddTask() {
         let id = items.reduce(0) { max($0, $1.id) } + 1

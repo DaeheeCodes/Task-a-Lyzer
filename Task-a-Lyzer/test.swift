@@ -1,4 +1,12 @@
 //
+//  test.swift
+//  Task-a-Lyzer
+//
+//  Created by DHC on 6/9/22.
+//
+/*
+import Foundation
+//
 //  ContentView.swift
 //  Task-a-Lyzer
 //
@@ -23,15 +31,21 @@ class ContentData: ObservableObject {
 }
 
 
-struct ContentView: View {
 
+struct ContentView: View {
+   /*
+    @StateObject var favListVM = FavListView()
+
+    ForEach(favListVM.favList) { item in
+                Button("\(item.name)") {
+                    if let url = URL(string: "https://" + item.url) {
+                        action = .load(URLRequest(url: url))
+                    }
+              }
+    */
     
     @ObservedObject var contentData = ContentData()
-    var subWebView: SubWebView!
-     
-    init() {
-       subWebView = SubWebView(inputURL: $contentData.inputURL, backDisabled: $contentData.backDisabled, forwardDisabled: $contentData.forwardDisabled)
-    }
+    var webView: WebView!
     
     @State var favItems: [FavItem] = {
         guard let data = UserDefaults.standard.data(forKey: "favorites") else { return [] }
@@ -42,29 +56,32 @@ struct ContentView: View {
     }()
     
     @State var favText: String = ""
+    
     @State var favShowAlert = false
+    
     @State var favItemToDelete: FavItem?
+
+    // use states like react
+    /*
     @State private var action = WebViewAction.idle
     @State private var state = WebViewState.empty
     @State private var address = "google.com"
-    @State private var showSafari: Bool = false
-
-    
-    
  //   @StateObject var favListVM = FavListView()
-
+*/
     var ratioSlider: UISlider!
     @State var size: Double = 0.7
 
-
+    init() {
+       webView = WebView(inputURL: $contentData.inputURL, backDisabled: $contentData.backDisabled, forwardDisabled: $contentData.forwardDisabled)
+    }
+    
    var body: some View {
        
-
+       
        //GeometryReader for adaptive screen size for different devices. Hstack vs Vstack change to comeNSObject
        GeometryReader { gp in
            VStack {
-               WebView.init( action: $action,
-                       state: $state)
+          webView
               .frame(width: gp.size.width, height: gp.size.height * CGFloat((size)))
           Slider(value: Binding(get: {
                      self.size
@@ -78,12 +95,15 @@ struct ContentView: View {
                       }
     // everything is sized by global property for better scaleability.
           HStack {
+              if state.canGoBack {
                   Button(action: {
                       action = .goBack
                   }) {
                       Image(systemName: "chevron.left")
                           .imageScale(.large)
                   }
+              }
+              if state.canGoForward {
                   Button(action: {
                       action = .goForward
                   }) {
@@ -91,6 +111,7 @@ struct ContentView: View {
                       .imageScale(.large)
                       
                   }
+              }
               /*
                List(items) { item in
                    VStack(alignment: .leading) {
@@ -108,7 +129,7 @@ struct ContentView: View {
               Menu {
                   Menu ("View Bookmark") {                          ForEach(favItems) { item in
                               Button("\(item.text)") {
-                                  if let url = URL(string: item.url) {
+                                  if let url = URL(string: "https://" + item.url) {
                                       action = .load(URLRequest(url: url))
                                   }
                             }
@@ -136,7 +157,7 @@ struct ContentView: View {
          .frame(width: gp.size.width, height: gp.size.height * 0.045)
                
           NavigationView {
-          HStack(spacing: 45.0) {
+          HStack(spacing: 65.0) {
               NavigationLink(
                   destination: NoteNew(),
                   label: {
@@ -159,13 +180,6 @@ struct ContentView: View {
                           .frame(width: gp.size.width * 0.12, height: gp.size.height * 0.06)
                   }).font(.system(size: 45.0))
                   .padding(.bottom, (gp.size.height > gp.size.width) ? 80 : 0)
-              NavigationLink(
-                destination: SubWebView(inputURL: $contentData.inputURL, backDisabled: $contentData.backDisabled, forwardDisabled: $contentData.forwardDisabled),
-                  label: {
-                      Image(systemName: "lightbulb")
-                          .frame(width: gp.size.width * 0.12, height: gp.size.height * 0.06)
-                  }).font(.system(size: 45.0))
-                  .padding(.bottom, (gp.size.height > gp.size.width) ? 80 : 0)
           }
           }
       }
@@ -175,10 +189,11 @@ struct ContentView: View {
     func didTapAddFav() {
         //random id from .id
         let id = favItems.reduce(0) { max($0, $1.id) } + 1
-        favItems.insert(FavItem(id: id, text: state.pageTitle ?? "error", url: state.pageURL ?? "error"), at: 0)
+        favItems.insert(FavItem(id: id, text: state.pageTitle ?? "!", url: address), at: 0)
         favText = ""
         favSave()
     }
+    
     func favSave() {
         guard let data = try? JSONEncoder().encode(favItems) else { return }
         UserDefaults.standard.set(data, forKey: "favorites")
@@ -196,11 +211,10 @@ struct ContentView: View {
               primaryButton: .destructive(Text("Delete"), action: deleteFav),
               secondaryButton: .cancel())
     }
-    @State private var selection: String?
+    
     var FavListView: some View {
-        
         VStack {
-            List(favItems, id: \.self, selection: $selection) { item in
+            List(favItems) { item in
                 VStack(alignment: .leading) {
                     HStack {
                     Text(item.text).font(.headline).lineLimit(1)
@@ -265,3 +279,11 @@ struct ContentView_Previews: PreviewProvider {
  }
  }
  */
+
+
+/*     WebView.init(config: WebViewConfig.init(allowsInlineMediaPlayback:true), action: $action,
+ state: $state,
+      restrictedPages: [],
+      htmlInState: true)
+ */
+*/

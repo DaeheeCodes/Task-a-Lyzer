@@ -4,82 +4,140 @@
 //
 //  Created by DHC on 6/2/22.
 //
-/*
- 
- granfathered code
- 
- 
-import Foundation
+
+
 import SwiftUI
+import Introspect
 import WebKit
 
- 
+ public enum WebViewAction {
+   case idle, // idle is always needed as actions need an empty state
+      load(URLRequest),
+      reload,
+      goBack,
+      goForward
+ }
 
-struct WebView : UIViewRepresentable {
-   @Binding var inputURL: String
-   @Binding var backDisabled: Bool
-   @Binding var forwardDisabled: Bool
-    
-    
-    
-    
-   var view: WKWebView = WKWebView()
+ public struct WebViewState {
+   public internal(set) var isLoading: Bool
+   public internal(set) var pageTitle: String?
+   public internal(set) var pageURL: String?
+   public internal(set) var error: Error?
+   public internal(set) var canGoBack: Bool
+   public internal(set) var canGoForward: Bool
 
-    
-   func makeUIView(context: Context) -> WKWebView  {
-       let webconfig = WKWebViewConfiguration()
-       webconfig.allowsInlineMediaPlayback = true
-       
-      view.navigationDelegate = context.coordinator
-      let request = URLRequest(url: URL(string: "https://www.udemy.com/course/js-algorithms-and-data-structures-masterclass/learn/lecture/8344044?start=435#overview?playsinline=1")!)
-       self.view.load(request)
-       self.view.frame = self.view.frame
-       self.view.configuration.allowsInlineMediaPlayback = true
-       self.view.configuration.mediaTypesRequiringUserActionForPlayback = []
-      return view
-   }
-   func updateUIView(_ uiView: WKWebView, context: Context) {
-   }
+   public static let empty = WebViewState(isLoading: false,
+                                          pageTitle: nil,
+                                          pageURL: nil,
+                                          error: nil,
+                                          canGoBack: false,
+                                          canGoForward: false)
+ }
 
-   func loadWeb(loadWeb: String) {
-      let dataURL = loadWeb.data(using: String.Encoding.utf8, allowLossyConversion: false)
-      if let webURL = URL(dataRepresentation: dataURL!, relativeTo: nil, isAbsolute: true) {
+public class WebViewCoordinator: NSObject {
+  private let webView: WebView
 
-         let request = URLRequest(url: webURL)
+  init(webView: WebView) {
+    self.webView = webView
+  }
 
-         view.load(request)
-      }
-   }
-   func goBack(){
-      view.goBack()
-   }
-   func goForward(){
-      view.goForward()
-   }
-   func refresh(){
-      view.reload()
-   }
-   func makeCoordinator() -> CoordinatorWebView {
-      return CoordinatorWebView(input: $inputURL, back: $backDisabled, forward: $forwardDisabled)
-   }
-}
-class CoordinatorWebView: NSObject, WKNavigationDelegate {
-   var inputURL: Binding<String>
-   var backDisabled: Binding<Bool>
-   var forwardDisabled: Binding<Bool>
-
-   init(input: Binding<String>, back: Binding<Bool>, forward: Binding<Bool>) {
-      self.inputURL = input
-      self.backDisabled = back
-      self.forwardDisabled = forward
-   }
-   func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
-      if let webURL = webView.url {
-         self.inputURL.wrappedValue = webURL.absoluteString
-         self.backDisabled.wrappedValue = !webView.canGoBack
-         self.forwardDisabled.wrappedValue = !webView.canGoForward
-      }
-   }
+  // Convenience method, used later
+  func setLoading(_ isLoading: Bool, error: Error? = nil) {
+    var newState =  webView.state
+    newState.isLoading = isLoading
+    if let error = error {
+      newState.error = error
+    }
+    webView.state = newState
+  }
 }
 
-*/
+extension WebViewCoordinator: WKNavigationDelegate {
+  public func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+    setLoading(false)
+
+      webView.evaluateJavaScript("document.title") { (response, error) in
+          if let title = response as? String {
+              var newState = self.webView.state
+              newState.pageTitle = title
+              self.webView.state = newState
+          }
+      }
+      
+      webView.evaluateJavaScript("document.URL.toString()") { (response, error) in
+          if let url = response as? String {
+              var newState = self.webView.state
+              newState.pageURL = url
+              self.webView.state = newState
+          }
+      }
+  }
+    
+    
+
+
+  public func webViewWebContentProcessDidTerminate(_ webView: WKWebView) {
+    setLoading(false)
+  }
+
+  public func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
+    setLoading(false, error: error)
+  }
+
+  public func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
+    setLoading(true)
+  }
+
+  public func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
+    var newState = self.webView.state
+    newState.isLoading = true
+    newState.canGoBack = webView.canGoBack
+    newState.canGoForward = webView.canGoForward
+    self.webView.state = newState
+  }
+}
+
+public struct WebView: UIViewRepresentable {
+  @Binding var action: WebViewAction
+  @Binding var state: WebViewState
+
+  public init(action: Binding<WebViewAction>,
+              state: Binding<WebViewState>) {
+    _action = action
+    _state = state
+  }
+
+  public func makeCoordinator() -> WebViewCoordinator {
+    WebViewCoordinator(webView: self)
+  }
+
+  public func makeUIView(context: Context) -> WKWebView {
+    let preferences = WKPreferences()
+    preferences.javaScriptEnabled = true
+
+    let configuration = WKWebViewConfiguration()
+    configuration.preferences = preferences
+      configuration.allowsInlineMediaPlayback = true
+    let webView = WKWebView(frame: CGRect.zero, configuration: configuration)
+    webView.navigationDelegate = context.coordinator
+    webView.allowsBackForwardNavigationGestures = true
+    webView.scrollView.isScrollEnabled = true
+    return webView
+  }
+
+  public func updateUIView(_ uiView: WKWebView, context: Context) {
+    switch action {
+    case .idle:
+      break
+    case .load(let request):
+      uiView.load(request)
+    case .reload:
+      uiView.reload()
+    case .goBack:
+      uiView.goBack()
+    case .goForward:
+      uiView.goForward()
+    }
+    action = .idle // this is important to prevent never-ending refreshes
+  }
+}
