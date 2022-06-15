@@ -213,11 +213,13 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
-            .previewInterfaceOrientation(.portrait)
+            .previewInterfaceOrientation(.portraitUpsideDown)
     }
 }
 
 /*
+ 
+ 
  Slider(value: Binding(get: {
             self.size
         }, set: { (newVal) in
