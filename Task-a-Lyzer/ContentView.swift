@@ -52,7 +52,7 @@ struct ContentView: View {
     
     
  //   @StateObject var favListVM = FavListView()
-
+// need atleast 40percent space for all the views to work correctly
     var ratioSlider: UISlider!
     @State var size: Double = 0.6
 
