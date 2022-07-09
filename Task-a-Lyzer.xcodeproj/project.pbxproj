@@ -27,6 +27,7 @@
 /* Begin PBXFileReference section */
 		EB42F47E284BD50F004C82D7 /* NoteNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteNew.swift; sourceTree = "<group>"; };
 		EB42F480284BE195004C82D7 /* NoteList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteList.swift; sourceTree = "<group>"; };
+		EB56EC2C2870F26300B55C9B /* TestPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = TestPlan.xctestplan; sourceTree = "<group>"; };
 		EB6EADFD2852EE2E0007BEA5 /* test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = test.swift; sourceTree = "<group>"; };
 		EB85CFCF2848A52C00A82BA6 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		EB8DAD2B28507D65000506D1 /* FavListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavListView.swift; sourceTree = "<group>"; };
@@ -57,6 +58,7 @@
 		EB936FA128454A38003EDC7B = {
 			isa = PBXGroup;
 			children = (
+				EB56EC2C2870F26300B55C9B /* TestPlan.xctestplan */,
 				EB936FAC28454A38003EDC7B /* Task-a-Lyzer */,
 				EB936FAB28454A38003EDC7B /* Products */,
 			);

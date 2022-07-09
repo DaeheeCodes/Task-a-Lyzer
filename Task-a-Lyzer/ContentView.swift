@@ -124,6 +124,7 @@ struct ContentView: View {
          .frame(width: gp.size.width, height: gp.size.height * 0.045)
                
           NavigationView {
+              VStack{
           HStack(spacing: 45.0) {
               NavigationLink(
                   destination: NoteNew(),
@@ -155,7 +156,11 @@ struct ContentView: View {
                   }).font(.system(size: 45.0))
                   .padding(.bottom, (gp.size.height > gp.size.width) ? 80 : 0)
           }
+                  Link("@DaeheeCodes - Starry Fields Collective",
+                        destination: URL(string: "https://StarryFields.com/")!)
+                  Spacer()
           }
+          }.navigationViewStyle(StackNavigationViewStyle())
       }
       .frame(width: gp.size.width, height: gp.size.height * 1)
    }
@@ -213,7 +218,7 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
-            .previewInterfaceOrientation(.portraitUpsideDown)
+            .previewInterfaceOrientation(.portrait)
     }
 }
 
