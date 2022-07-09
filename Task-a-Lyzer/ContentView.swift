@@ -54,7 +54,7 @@ struct ContentView: View {
  //   @StateObject var favListVM = FavListView()
 
     var ratioSlider: UISlider!
-    @State var size: Double = 0.7
+    @State var size: Double = 0.6
 
 
    var body: some View {
