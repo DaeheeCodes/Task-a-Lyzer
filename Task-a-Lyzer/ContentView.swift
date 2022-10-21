@@ -13,7 +13,6 @@ struct FavItem: Codable, Hashable, Identifiable {
     let id: Int
     let text: String
     var url: String
-
 }
 
 class ContentData: ObservableObject {
@@ -51,7 +50,6 @@ struct ContentView: View {
 
     
     
- //   @StateObject var favListVM = FavListView()
 // need atleast 40percent space for all the views to work correctly
     var ratioSlider: UISlider!
     @State var size: Double = 0.6
@@ -221,42 +219,3 @@ struct ContentView_Previews: PreviewProvider {
             .previewInterfaceOrientation(.portrait)
     }
 }
-
-/*
- 
- 
- Slider(value: Binding(get: {
-            self.size
-        }, set: { (newVal) in
-            self.size = newVal
-        }))
- .accentColor(.black)
- .opacity(0.1)
- .frame(width: gp.size.width, height: gp.size.height * 0.01)
- Label {
-     Text("Export")
-         .foregroundColor(Color.black)
- } icon: {
-     Image(systemName: "square.and.arrow.up.on.square")
-         .foregroundColor(Color.blue)
- }
- 
- struct CompactStack<Content>: View where Content: View {
-   @Environment(\.horizontalSizeClass) var horizontalSizeClass
-   let content: Content
-
-   init(@ViewBuilder content: () -> Content) {
-     self.content = content()
-   }
-
-   var body: some View {
-       GeometryReader { geometry in
-       if geometry.size.height > geometry.size.width {
-       VStack { content }
-     } else {
-       HStack { content }
-     }
-   }
- }
- }
- */

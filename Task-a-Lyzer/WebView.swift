@@ -10,6 +10,7 @@ import SwiftUI
 import WebKit
 import Foundation
 
+
 public enum WebViewAction: Equatable {
     case idle,
          load(URLRequest),
@@ -256,7 +257,8 @@ public struct WebView: UIViewRepresentable {
         } else {
             webView.backgroundColor = .clear
         }
-        
+        let request = URLRequest(url: URL(string: "https://www.google.com/")!)
+        webView.load(request)
         return webView
     }
     
@@ -291,188 +293,4 @@ public struct WebView: UIViewRepresentable {
 }
 #endif
 
-#if os(macOS)
-public struct WebView: NSViewRepresentable {
-    let config: WebViewConfig
-    @Binding var action: WebViewAction
-    @Binding var state: WebViewState
-    let restrictedPages: [String]?
-    let htmlInState: Bool
-    let schemeHandlers: [String: (URL) -> Void]
-    
-    public init(config: WebViewConfig = .default,
-                action: Binding<WebViewAction>,
-                state: Binding<WebViewState>,
-                restrictedPages: [String]? = nil,
-                htmlInState: Bool = false,
-                schemeHandlers: [String: (URL) -> Void] = [:]) {
-        self.config = config
-        _action = action
-        _state = state
-        self.restrictedPages = restrictedPages
-        self.htmlInState = htmlInState
-        self.schemeHandlers = schemeHandlers
-    }
-    
-    public func makeCoordinator() -> WebViewCoordinator {
-        WebViewCoordinator(webView: self)
-    }
-    
-    public func makeNSView(context: Context) -> WKWebView {
-        let preferences = WKPreferences()
-        preferences.javaScriptEnabled = config.javaScriptEnabled
-        
-        let configuration = WKWebViewConfiguration()
-        configuration.preferences = preferences
-        
-        let webView = WKWebView(frame: CGRect.zero, configuration: configuration)
-        webView.navigationDelegate = context.coordinator
-        webView.allowsBackForwardNavigationGestures = config.allowsBackForwardNavigationGestures
-        
-        return webView
-    }
-    
-    public func updateNSView(_ uiView: WKWebView, context: Context) {
-        if action == .idle {
-            return
-        }
-        switch action {
-        case .idle:
-            break
-        case .load(let request):
-            uiView.load(request)
-        case .loadHTML(let html):
-            uiView.loadHTMLString(html, baseURL: nil)
-        case .reload:
-            uiView.reload()
-        case .goBack:
-            uiView.goBack()
-        case .goForward:
-            uiView.goForward()
-        case .evaluateJS(let command, let callback):
-            uiView.evaluateJavaScript(command) { result, error in
-                if let error = error {
-                    callback(.failure(error))
-                } else {
-                    callback(.success(result))
-                }
-            }
-        }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-            action = .idle
-        }
-    }
-}
-#endif
 
-struct WebViewTest: View {
-    @State private var action = WebViewAction.idle
-    @State private var state = WebViewState.empty
-    @State private var address = "https://www.google.com"
-    
-    var body: some View {
-        VStack {
-            titleView
-            navigationToolbar
-            errorView
-            Divider()
-            WebView(action: $action,
-                    state: $state,
-                    restrictedPages: ["apple.com"],
-                    htmlInState: true)
-            Text(state.pageHTML ?? "")
-                .lineLimit(nil)
-            Spacer()
-        }
-    }
-    
-    private var titleView: some View {
-        Text(state.pageTitle ?? "Load a page")
-            .font(.system(size: 24))
-    }
-    
-    private var navigationToolbar: some View {
-        HStack(spacing: 10) {
-            Button("Test HTML") {
-                action = .loadHTML("<html><body><b>Hello World!</b></body></html>")
-            }
-            TextField("Address", text: $address)
-            if state.isLoading {
-                if #available(iOS 14, macOS 11, *) {
-                    ProgressView()
-                        .progressViewStyle(CircularProgressViewStyle())
-                } else {
-                    Text("Loading")
-                }
-            }
-            Spacer()
-            Button("Go") {
-                if let url = URL(string: address) {
-                    action = .load(URLRequest(url: url))
-                }
-            }
-            Button(action: {
-                action = .reload
-            }) {
-                if #available(iOS 14, macOS 11, *) {
-                    Image(systemName: "arrow.counterclockwise")
-                        .imageScale(.large)
-                } else {
-                    Text("Reload")
-                }
-            }
-            if state.canGoBack {
-                Button(action: {
-                    action = .goBack
-                }) {
-                    if #available(iOS 14, macOS 11, *) {
-                        Image(systemName: "chevron.left")
-                            .imageScale(.large)
-                    } else {
-                        Text("<")
-                    }
-                }
-            }
-            if state.canGoForward {
-                Button(action: {
-                    action = .goForward
-                }) {
-                    if #available(iOS 14, macOS 11, *) {
-                        Image(systemName: "chevron.right")
-                            .imageScale(.large)
-                    } else {
-                        Text(">")
-                    }
-                }
-            }
-        }.padding()
-    }
-    
-    private var errorView: some View {
-        Group {
-            if let error = state.error {
-                Text(error.localizedDescription)
-                    .foregroundColor(.red)
-            }
-        }
-    }
-}
-
-struct WebView_Previews: PreviewProvider {
-    static var previews: some View {
-        WebViewTest()
-    }
-}
-
-
-
-/*
- 
- webView.evaluateJavaScript("document.URL.toString()") { (response, error) in
-     if let url = response as? String {
-         var newState = self.webView.state
-         newState.pageURL = url
-         self.webView.state = newState
-     }
- }
- */

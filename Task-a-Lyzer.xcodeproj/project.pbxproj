@@ -11,14 +11,12 @@
 		EB42F47D284BC8EB004C82D7 /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = EB42F47C284BC8EB004C82D7 /* Introspect */; };
 		EB42F47F284BD50F004C82D7 /* NoteNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB42F47E284BD50F004C82D7 /* NoteNew.swift */; };
 		EB42F481284BE195004C82D7 /* NoteList.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB42F480284BE195004C82D7 /* NoteList.swift */; };
-		EB6EADFE2852EE2E0007BEA5 /* test.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6EADFD2852EE2E0007BEA5 /* test.swift */; };
 		EB85CFD02848A52C00A82BA6 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB85CFCF2848A52C00A82BA6 /* WebView.swift */; };
 		EB8DAD2C28507D65000506D1 /* FavListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8DAD2B28507D65000506D1 /* FavListView.swift */; };
 		EB936FAE28454A38003EDC7B /* Task_a_LyzerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB936FAD28454A38003EDC7B /* Task_a_LyzerApp.swift */; };
 		EB936FB028454A38003EDC7B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB936FAF28454A38003EDC7B /* ContentView.swift */; };
 		EB936FB228454A3C003EDC7B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB936FB128454A3C003EDC7B /* Assets.xcassets */; };
 		EB936FB528454A3C003EDC7B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB936FB428454A3C003EDC7B /* Preview Assets.xcassets */; };
-		EBBFF53828532349001FB17A /* SafariWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBBFF53728532349001FB17A /* SafariWebView.swift */; };
 		EBBFF53A28532A80001FB17A /* SubWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBBFF53928532A80001FB17A /* SubWebView.swift */; };
 		EBBFF53C2853BF4C001FB17A /* FavList.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBBFF53B2853BF4C001FB17A /* FavList.swift */; };
 		EBF86D41284BB82D00D8D069 /* SwiftUIKitView in Frameworks */ = {isa = PBXBuildFile; productRef = EBF86D40284BB82D00D8D069 /* SwiftUIKitView */; };
@@ -28,7 +26,6 @@
 		EB42F47E284BD50F004C82D7 /* NoteNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteNew.swift; sourceTree = "<group>"; };
 		EB42F480284BE195004C82D7 /* NoteList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteList.swift; sourceTree = "<group>"; };
 		EB56EC2C2870F26300B55C9B /* TestPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = TestPlan.xctestplan; sourceTree = "<group>"; };
-		EB6EADFD2852EE2E0007BEA5 /* test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = test.swift; sourceTree = "<group>"; };
 		EB85CFCF2848A52C00A82BA6 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		EB8DAD2B28507D65000506D1 /* FavListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavListView.swift; sourceTree = "<group>"; };
 		EB936FAA28454A38003EDC7B /* Task-a-Lyzer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Task-a-Lyzer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -36,7 +33,6 @@
 		EB936FAF28454A38003EDC7B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ContentView.swift; path = "Task-a-Lyzer/ContentView.swift"; sourceTree = SOURCE_ROOT; };
 		EB936FB128454A3C003EDC7B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EB936FB428454A3C003EDC7B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		EBBFF53728532349001FB17A /* SafariWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariWebView.swift; sourceTree = "<group>"; };
 		EBBFF53928532A80001FB17A /* SubWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubWebView.swift; sourceTree = "<group>"; };
 		EBBFF53B2853BF4C001FB17A /* FavList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -84,8 +80,6 @@
 				EB42F47E284BD50F004C82D7 /* NoteNew.swift */,
 				EB42F480284BE195004C82D7 /* NoteList.swift */,
 				EB8DAD2B28507D65000506D1 /* FavListView.swift */,
-				EB6EADFD2852EE2E0007BEA5 /* test.swift */,
-				EBBFF53728532349001FB17A /* SafariWebView.swift */,
 				EBBFF53928532A80001FB17A /* SubWebView.swift */,
 			);
 			path = "Task-a-Lyzer";
@@ -109,6 +103,7 @@
 				EB936FA628454A38003EDC7B /* Sources */,
 				EB936FA728454A38003EDC7B /* Frameworks */,
 				EB936FA828454A38003EDC7B /* Resources */,
+				EB45982C287A2CFF0009777E /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -174,6 +169,26 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		EB45982C287A2CFF0009777E /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		EB936FA628454A38003EDC7B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -185,10 +200,8 @@
 				EB8DAD2C28507D65000506D1 /* FavListView.swift in Sources */,
 				EBBFF53A28532A80001FB17A /* SubWebView.swift in Sources */,
 				EBBFF53C2853BF4C001FB17A /* FavList.swift in Sources */,
-				EB6EADFE2852EE2E0007BEA5 /* test.swift in Sources */,
 				EB42F47F284BD50F004C82D7 /* NoteNew.swift in Sources */,
 				EB42F481284BE195004C82D7 /* NoteList.swift in Sources */,
-				EBBFF53828532349001FB17A /* SafariWebView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -333,7 +346,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.01;
 				NEW_SETTING = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "starryfields.com.Task-a-Lyzer";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -365,7 +378,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.01;
 				NEW_SETTING = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "starryfields.com.Task-a-Lyzer";
 				PRODUCT_NAME = "$(TARGET_NAME)";
