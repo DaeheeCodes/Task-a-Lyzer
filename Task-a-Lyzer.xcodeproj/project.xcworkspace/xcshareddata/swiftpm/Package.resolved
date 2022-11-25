@@ -5,8 +5,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/siteline/SwiftUI-Introspect.git",
       "state" : {
-        "revision" : "f2616860a41f9d9932da412a8978fec79c06fe24",
-        "version" : "0.1.4"
+        "branch" : "master",
+        "revision" : "d3cbf32788250741d397cfb5bcd532c37aa1096d"
       }
     },
     {
@@ -14,8 +14,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/globulus/swiftui-webview",
       "state" : {
-        "revision" : "62d86f9c63f457603bec3e8bd963fae392da230a",
-        "version" : "1.0.6"
+        "branch" : "main",
+        "revision" : "0c680af957f880dc2e4b66a56a7da2187255f5f5"
       }
     },
     {

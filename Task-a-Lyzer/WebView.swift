@@ -20,7 +20,6 @@ public enum WebViewAction: Equatable {
          goForward,
          evaluateJS(String, (Result<Any?, Error>) -> Void)
     
-    
     public static func == (lhs: WebViewAction, rhs: WebViewAction) -> Bool {
         if case .idle = lhs,
            case .idle = rhs {
@@ -116,7 +115,6 @@ extension WebViewCoordinator: WKNavigationDelegate {
       setLoading(false,
                  canGoBack: webView.canGoBack,
                  canGoForward: webView.canGoForward)
-        
         webView.evaluateJavaScript("document.title") { (response, error) in
             if let title = response as? String {
                 var newState = self.webView.state

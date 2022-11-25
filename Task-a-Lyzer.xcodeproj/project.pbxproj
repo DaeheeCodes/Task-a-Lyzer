@@ -11,6 +11,8 @@
 		EB42F47D284BC8EB004C82D7 /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = EB42F47C284BC8EB004C82D7 /* Introspect */; };
 		EB42F47F284BD50F004C82D7 /* NoteNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB42F47E284BD50F004C82D7 /* NoteNew.swift */; };
 		EB42F481284BE195004C82D7 /* NoteList.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB42F480284BE195004C82D7 /* NoteList.swift */; };
+		EB758D3D2930A496007B8217 /* SwiftUIWebView in Frameworks */ = {isa = PBXBuildFile; productRef = EB758D3C2930A496007B8217 /* SwiftUIWebView */; };
+		EB758D402930A4CE007B8217 /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = EB758D3F2930A4CE007B8217 /* Introspect */; };
 		EB85CFD02848A52C00A82BA6 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB85CFCF2848A52C00A82BA6 /* WebView.swift */; };
 		EB8DAD2C28507D65000506D1 /* FavListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8DAD2B28507D65000506D1 /* FavListView.swift */; };
 		EB936FAE28454A38003EDC7B /* Task_a_LyzerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB936FAD28454A38003EDC7B /* Task_a_LyzerApp.swift */; };
@@ -44,6 +46,8 @@
 			files = (
 				EB0079E9284C958E0034B3A8 /* SwiftUIWebView in Frameworks */,
 				EBF86D41284BB82D00D8D069 /* SwiftUIKitView in Frameworks */,
+				EB758D402930A4CE007B8217 /* Introspect in Frameworks */,
+				EB758D3D2930A496007B8217 /* SwiftUIWebView in Frameworks */,
 				EB42F47D284BC8EB004C82D7 /* Introspect in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -114,6 +118,8 @@
 				EBF86D40284BB82D00D8D069 /* SwiftUIKitView */,
 				EB42F47C284BC8EB004C82D7 /* Introspect */,
 				EB0079E8284C958E0034B3A8 /* SwiftUIWebView */,
+				EB758D3C2930A496007B8217 /* SwiftUIWebView */,
+				EB758D3F2930A4CE007B8217 /* Introspect */,
 			);
 			productName = "Task-a-Lyzer";
 			productReference = EB936FAA28454A38003EDC7B /* Task-a-Lyzer.app */;
@@ -147,6 +153,8 @@
 				EBF86D3F284BB82D00D8D069 /* XCRemoteSwiftPackageReference "SwiftUIKitView" */,
 				EB42F47B284BC8EB004C82D7 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
 				EB0079E7284C958E0034B3A8 /* XCRemoteSwiftPackageReference "swiftui-webview" */,
+				EB758D3B2930A496007B8217 /* XCRemoteSwiftPackageReference "swiftui-webview" */,
+				EB758D3E2930A4CE007B8217 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
 			);
 			productRefGroup = EB936FAB28454A38003EDC7B /* Products */;
 			projectDirPath = "";
@@ -346,7 +354,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.01;
+				MARKETING_VERSION = 1.02;
 				NEW_SETTING = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "starryfields.com.Task-a-Lyzer";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -378,7 +386,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.01;
+				MARKETING_VERSION = 1.02;
 				NEW_SETTING = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "starryfields.com.Task-a-Lyzer";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -428,6 +436,22 @@
 				minimumVersion = 0.1.4;
 			};
 		};
+		EB758D3B2930A496007B8217 /* XCRemoteSwiftPackageReference "swiftui-webview" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/globulus/swiftui-webview";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+		EB758D3E2930A4CE007B8217 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/siteline/SwiftUI-Introspect.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		EBF86D3F284BB82D00D8D069 /* XCRemoteSwiftPackageReference "SwiftUIKitView" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/AvdLee/SwiftUIKitView.git";
@@ -447,6 +471,16 @@
 		EB42F47C284BC8EB004C82D7 /* Introspect */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = EB42F47B284BC8EB004C82D7 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */;
+			productName = Introspect;
+		};
+		EB758D3C2930A496007B8217 /* SwiftUIWebView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EB758D3B2930A496007B8217 /* XCRemoteSwiftPackageReference "swiftui-webview" */;
+			productName = SwiftUIWebView;
+		};
+		EB758D3F2930A4CE007B8217 /* Introspect */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EB758D3E2930A4CE007B8217 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */;
 			productName = Introspect;
 		};
 		EBF86D40284BB82D00D8D069 /* SwiftUIKitView */ = {
