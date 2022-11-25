@@ -9,11 +9,16 @@
 
 #### Ultimately, I want to level the playing for lower-income famillies and children when it comes to their accessibility to education / cutting-edge technology so that they are familliar with handling these techs at an early age.
 
+Over 54% of the world population is still without a computer in their household while 84% of people have a personal smartphone.
 
-I saw that iPhones did not support split-screen functionality out-of-box. I wanted to create an app that will allow lower-income famillies to use their single iOS device as a full-feature learning tool.<br/><br/>
-Task-a-Lyzer achieves this by enabling dual-screen browsing and note-taking on iPhones.<br/><br/>
-It has a full feature web-browser on the top screen and in-app note taking screen and iCloud Notes app on the bottom screen.<br/><br/>
-Now anyone with a phone and a keyboard can use their iPhones as a full-feature learning device.
+
+Task-a-Lyzer attempts to bridge the equipment-gap for iOS based learning for people without personal computers or multiple iOS devices by providing them a frictionlesss support for split-screen learning on their single iOS device. While allowing them to familiarize themselves with using a mobile device for productivity - as pen and paper becomes more antiquated every year.
+
+
+Currently, iPhones do not support split-screen natively and iPads do not support top-down multiscreen view. Users do not have an option to do two things at once natively on iPhones, Task-a-Lyzer changes that.
+
+
+The app is also useful to users who are on-the-go and have a need to write down notes while reading the news, watching the market, etc.
 
 
 ## Description
