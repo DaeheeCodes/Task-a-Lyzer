@@ -13,6 +13,7 @@
 		EB42F481284BE195004C82D7 /* NoteList.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB42F480284BE195004C82D7 /* NoteList.swift */; };
 		EB758D3D2930A496007B8217 /* SwiftUIWebView in Frameworks */ = {isa = PBXBuildFile; productRef = EB758D3C2930A496007B8217 /* SwiftUIWebView */; };
 		EB758D402930A4CE007B8217 /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = EB758D3F2930A4CE007B8217 /* Introspect */; };
+		EB758D422930AB37007B8217 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = EB758D412930AB37007B8217 /* README.md */; };
 		EB85CFD02848A52C00A82BA6 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB85CFCF2848A52C00A82BA6 /* WebView.swift */; };
 		EB8DAD2C28507D65000506D1 /* FavListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8DAD2B28507D65000506D1 /* FavListView.swift */; };
 		EB936FAE28454A38003EDC7B /* Task_a_LyzerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB936FAD28454A38003EDC7B /* Task_a_LyzerApp.swift */; };
@@ -28,6 +29,7 @@
 		EB42F47E284BD50F004C82D7 /* NoteNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteNew.swift; sourceTree = "<group>"; };
 		EB42F480284BE195004C82D7 /* NoteList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteList.swift; sourceTree = "<group>"; };
 		EB56EC2C2870F26300B55C9B /* TestPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = TestPlan.xctestplan; sourceTree = "<group>"; };
+		EB758D412930AB37007B8217 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		EB85CFCF2848A52C00A82BA6 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		EB8DAD2B28507D65000506D1 /* FavListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavListView.swift; sourceTree = "<group>"; };
 		EB936FAA28454A38003EDC7B /* Task-a-Lyzer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Task-a-Lyzer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -85,6 +87,7 @@
 				EB42F480284BE195004C82D7 /* NoteList.swift */,
 				EB8DAD2B28507D65000506D1 /* FavListView.swift */,
 				EBBFF53928532A80001FB17A /* SubWebView.swift */,
+				EB758D412930AB37007B8217 /* README.md */,
 			);
 			path = "Task-a-Lyzer";
 			sourceTree = "<group>";
@@ -170,6 +173,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EB758D422930AB37007B8217 /* README.md in Resources */,
 				EB936FB528454A3C003EDC7B /* Preview Assets.xcassets in Resources */,
 				EB936FB228454A3C003EDC7B /* Assets.xcassets in Resources */,
 			);
