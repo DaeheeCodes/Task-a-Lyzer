@@ -18,7 +18,7 @@ struct SubWebView : UIViewRepresentable {
 
    func makeUIView(context: Context) -> WKWebView  {
       view.navigationDelegate = context.coordinator
-      let request = URLRequest(url: URL(string: "https://www.google.com")!)
+      let request = URLRequest(url: URL(string: "https://keep.google.com/")!)
       self.view.load(request)
       return view
    }
